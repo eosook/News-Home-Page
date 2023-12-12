@@ -1,0 +1,338 @@
+$primary-orange: hsl(35, 77%, 62%);
+$primary-red: hsl(5, 85%, 63%);
+
+$neutral-white: hsl(36, 100%, 99%);
+$neutral-blue: hsl(233, 8%, 79%);
+$neutral-blue-dark: hsl(236, 13%, 42%);
+$neutral-blue-darker: hsl(240, 100%, 5%);
+
+$font-size:(
+    "paragraph": 15px,
+    "small-header": 20px,
+    "number": 30px,
+    "header": 40px,
+    "very-big": 50px
+);
+
+$font-weight: (
+    "regular": 400,
+    "bold": 700,
+    "bolder": 800
+);
+
+$font-family: 'Inter', sans-serif;
+
+*{
+    font-family: $font-family;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 15px;
+}
+
+.navigation-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .menu-bar{
+        position: fixed;
+        list-style-type: none;
+        background-color: $neutral-white;
+        margin-bottom: 3px;
+        height: 100%;
+        width: 60%;
+        right: 0;
+        top: 0;
+        padding: 50px 40px;
+        text-align: right;
+
+        .close-logo{
+            margin-bottom: 50px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+
+        li{
+            font-size: map-get($font-size, number);
+            margin-bottom: 30px;
+            text-align: left;
+
+            a{
+                color: black;
+                text-decoration: none;
+            }
+    
+            a:hover{
+                color: $primary-red;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .web-logo{
+        height: 30px;
+        width: 50px;
+    }
+
+    .menu-logo{
+        height: 20px;
+        width: 50px;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.web-3-image{
+    margin: 30px 0 30px 0;
+    width: 100%;
+}
+
+.main-article{
+
+    &-header{
+        font-size: map-get($font-size, header);
+        font-weight: map-get($font-weight, bolder);
+        line-height: 1;
+        width: 75%;
+    }
+
+    &-body{
+
+        &-text{
+            margin: 20px 0 30px 0;
+            color: $neutral-blue-dark;
+            font-size: map-get($font-size, paragraph);
+            font-weight: map-get($font-weight, regular);
+            line-height: 1.8;
+        }
+        
+        &-read-more{
+            background-color: $primary-red;
+            border: none;
+            letter-spacing: 2px;
+            color: $neutral-white;
+            width: 180px;
+            height: 50px;
+
+            &:hover{
+                background-color: $neutral-blue-darker;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.new-section{
+    background-color: $neutral-blue-darker;
+    color: $neutral-white;
+    padding: 20px;
+    margin-top: 60px;
+
+    &-header{
+        color: $primary-orange;
+    }
+    .new-article{
+        margin-top: 20px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid $neutral-blue-dark;
+
+        &-header{
+            font-size: map-get($font-size, small-header);
+            font-weight: map-get($font-weight, bold);
+
+            &:hover{
+                color: $primary-orange;
+                cursor: pointer;
+            }
+        }
+
+        &-body{
+            font-size: map-get($font-size, paragraph);
+            font-weight: map-get($font-weight, regular);
+            color: $neutral-blue;
+            margin-top: 10px;
+        }
+
+        &:last-child{
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    }
+}
+
+.popular-article{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    margin-bottom: 30px;
+
+    .popular-image{
+        width: 25%;
+    }
+
+    &-content{
+        width: 68%;
+    }
+
+    &-number{
+        color: $neutral-blue;
+        font-size: map-get($font-size, number);
+    }
+
+    &-header{
+        font-size: map-get($font-size, small-header);
+        font-weight: map-get($font-weight, bolder);
+        margin: 15px 0 15px 0;
+
+        &:hover{
+            color: $primary-red;
+            cursor: pointer;
+        }
+    }
+
+    &-body{
+        font-size: map-get($font-size, paragraph);
+        color: $neutral-blue-dark;
+    }
+}
+
+
+.hidden{
+    display: none;
+}
+
+@media screen and (min-width: 1200px){
+    body{
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        grid-template-rows: 50px 400px 200px 200px;
+        row-gap: 30px;
+        column-gap: 30px;
+        margin: 80px 180px;
+        grid-template-areas:
+            "nav nav nav"
+            "image image new"
+            "main main new"
+            "popular1 popular2 popular3";
+    }
+
+    .navigation-bar{
+        grid-area: nav;
+
+
+        .menu-bar{
+            display: flex;
+            position: static;
+            padding: 0;
+            align-items: center;
+            margin: 0;
+            width: 600px;
+            
+            .close-logo{
+                display: none;
+            }
+
+            li{
+                font-size: map-get($font-size, paragraph);
+                margin-bottom: 0;
+                width: 100%;
+                text-align: center;
+
+                &:last-child{
+                    text-align: right;
+                }
+            }
+        }
+
+        .menu-logo{
+            display: none;
+        }
+    }
+
+    .web-3-image{
+        grid-area: image;
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+        object-position: 50% 10%;
+        top: 20px;
+        margin-top: 0;
+    }
+
+    .main-article{
+        grid-area: main;
+        display: flex;
+        height: 100%;
+
+        &-header{
+            font-size: map-get($font-size, very-big);
+            width: 50%;
+        }
+
+        &-body{
+            width: 50%;
+            padding: 0 30px;
+
+            &-text{
+                margin: 0 0 30px 0;
+            }
+
+            &-read-more{
+                font-weight: map-get($font-weight, bolder);
+            }
+        }
+    }
+
+    .new-section{
+        grid-area: new;
+        margin-top: 0;
+
+        &-header{
+            font-size: map-get($font-size, header);
+        }
+
+        .new-article{
+            margin-top: 40px;
+            padding-bottom: 50px;
+
+            &-header{
+                font-size: map-get($font-size, small-header);
+            }
+        }
+    }
+    
+    .grid-1{
+        grid-area: popular1;
+    }
+
+    .grid-2{
+        grid-area: popular2;
+    }
+    
+    .grid-3{
+        grid-area: popular3;
+    }
+        
+    .popular-article{
+        justify-content: start;
+        margin-top: 40px;
+
+        .popular-image{
+            width: 100px;
+            height: 130px;
+        }
+
+        &-content{
+            width: 100%;
+            height: 100%;
+            padding: 0 20px;
+        }
+    }
+}
